@@ -45,7 +45,7 @@ export function Hero() {
               <h1 className="text-5xl md:text-6xl mb-6 text-foreground font-bold animate-fade-in-up delay-200">
                 Backend Developer<br />
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-gradient">
-                  & Cloud & DevOps Enthusiast
+                  , Cloud & DevOps Enthusiast
                 </span>
               </h1>
               <div className="w-1 h-24 bg-primary mb-6 animate-slide-in-bottom delay-400"></div>
