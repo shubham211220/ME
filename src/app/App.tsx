@@ -25,7 +25,7 @@ export default function App() {
           {/* Toggle Button - positioned at top-right of terminal window */}
           <button
             onClick={() => setIsTerminalMode(!isTerminalMode)}
-            className="absolute top-20 right-40 z-50 bg-gray-900 hover:bg-gray-800 text-white p-4 rounded-lg shadow-lg border-2 border-gray-700 transition-all hover:shadow-[0_0_20px_rgba(0,0,0,0.3)] flex items-center gap-2 font-mono hover-lift animate-bounce-in delay-500"
+            className="absolute top-20 right-4 sm:right-6 md:right-8 lg:right-40 z-50 bg-gray-900 hover:bg-gray-800 text-white p-4 rounded-lg shadow-lg border-2 border-gray-700 transition-all hover:shadow-[0_0_20px_rgba(0,0,0,0.3)] flex items-center gap-2 font-mono hover-lift animate-bounce-in delay-500"
             aria-label="Toggle terminal mode"
           >
             <User className="w-5 h-5" />
