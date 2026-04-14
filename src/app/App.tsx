@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import { Terminal as TerminalIcon, User } from 'lucide-react';
 import { Header } from '@/app/components/Header';
 import { Hero } from '@/app/components/Hero';
-import { Projects } from '@/app/components/Projects';
+import { Stats } from '@/app/components/Stats';
 import { Skills } from '@/app/components/Skills';
+import { Experience } from '@/app/components/Experience';
+import { Projects } from '@/app/components/Projects';
 import { Contact } from '@/app/components/Contact';
 import { Footer } from '@/app/components/Footer';
 import { Terminal } from '@/app/components/Terminal';
+import { ScrollToTop } from '@/app/components/ScrollToTop';
 import { initScrollAnimations } from '@/utils/animations';
 
 export default function App() {
@@ -16,41 +19,50 @@ export default function App() {
     initScrollAnimations();
   }, []);
 
+  // Re-init scroll animations when switching back to portfolio mode
+  useEffect(() => {
+    if (!isTerminalMode) {
+      setTimeout(() => initScrollAnimations(), 100);
+    }
+  }, [isTerminalMode]);
+
   return (
     <div className="min-h-screen relative">
-      {/* Content */}
       {isTerminalMode ? (
         <div className="relative">
           <Terminal />
-          {/* Toggle Button - positioned at top-right of terminal window */}
           <button
-            onClick={() => setIsTerminalMode(!isTerminalMode)}
-            className="absolute top-20 right-4 sm:right-6 md:right-8 lg:right-40 z-50 bg-gray-900 hover:bg-gray-800 text-white p-4 rounded-lg shadow-lg border-2 border-gray-700 transition-all hover:shadow-[0_0_20px_rgba(0,0,0,0.3)] flex items-center gap-2 font-mono hover-lift animate-bounce-in delay-500"
-            aria-label="Toggle terminal mode"
+            onClick={() => setIsTerminalMode(false)}
+            className="absolute top-20 right-4 sm:right-6 md:right-8 lg:right-40 z-50 gradient-bg hover:opacity-90 text-white p-3 sm:p-4 rounded-xl shadow-lg glow-cyan transition-all flex items-center gap-2 font-medium btn-bounce animate-bounce-in delay-500"
+            aria-label="Switch to Portfolio View"
           >
             <User className="w-5 h-5" />
-            <span className="hidden sm:inline">Portfolio View</span>
+            <span className="hidden sm:inline text-sm">Portfolio View</span>
           </button>
         </div>
       ) : (
         <>
-          {/* Toggle Button - fixed position for portfolio view */}
+          {/* Terminal Mode Toggle */}
           <button
-            onClick={() => setIsTerminalMode(!isTerminalMode)}
-            className="fixed top-24 right-6 z-50 bg-gray-900 hover:bg-gray-800 text-white p-4 rounded-lg shadow-lg border-2 border-gray-700 transition-all hover:shadow-[0_0_20px_rgba(0,0,0,0.3)] flex items-center gap-2 font-mono hover-lift animate-bounce-in delay-1000"
-            aria-label="Toggle terminal mode"
+            onClick={() => setIsTerminalMode(true)}
+            className="fixed top-24 right-6 z-50 glass-card hover:bg-secondary/80 text-foreground p-3 sm:p-4 rounded-xl shadow-lg transition-all flex items-center gap-2 font-medium btn-bounce animate-bounce-in delay-1000 border border-border hover-glow"
+            aria-label="Switch to Terminal Mode"
           >
-            <TerminalIcon className="w-5 h-5" />
-            <span className="hidden sm:inline">Terminal Mode</span>
+            <TerminalIcon className="w-5 h-5 text-primary" />
+            <span className="hidden sm:inline text-sm">Terminal</span>
           </button>
+
           <Header />
-          <div className="pt-20">
+          <main>
             <Hero />
+            <Stats />
             <Skills />
+            <Experience />
             <Projects />
             <Contact />
-            <Footer />
-          </div>
+          </main>
+          <Footer />
+          <ScrollToTop />
         </>
       )}
     </div>
