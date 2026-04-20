@@ -20,7 +20,7 @@ export function Terminal() {
   const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const commands: Record<string, { description: string; execute: () => 'CLEAR' | TerminalLine[] }> = {
+  const commands: Record<string, { description: string; execute: () => 'CLEAR' | 'EXIT' | TerminalLine[] }> = {
     help: {
       description: 'Show available commands',
       execute: () => [
@@ -138,18 +138,18 @@ export function Terminal() {
         { type: 'output' as const, content: '  Used Git for version control and collaborated on internal' },
         { type: 'output' as const, content: '  cloud-based projects following basic DevOps principles.' },
         { type: 'output' as const, content: '' },
-        { type: 'output' as const, content: '▸ Senior Full Stack Developer @ TechCorp' },
-        { type: 'output' as const, content: '  2021 - Present' },
-        { type: 'output' as const, content: '  Leading development of enterprise applications' },
-        { type: 'output' as const, content: '' },
-        { type: 'output' as const, content: '▸ Full Stack Developer @ StartupXYZ' },
-        { type: 'output' as const, content: '  2019 - 2021' },
-        { type: 'output' as const, content: '  Built scalable web applications from scratch' },
-        { type: 'output' as const, content: '' },
-        { type: 'output' as const, content: '▸ Junior Developer @ WebAgency' },
-        { type: 'output' as const, content: '  2018 - 2019' },
-        { type: 'output' as const, content: '  Developed client websites and web applications' },
-        { type: 'output' as const, content: '' },
+        // { type: 'output' as const, content: '▸ Senior Full Stack Developer @ TechCorp' },
+        // { type: 'output' as const, content: '  2021 - Present' },
+        // { type: 'output' as const, content: '  Leading development of enterprise applications' },
+        // { type: 'output' as const, content: '' },
+        // { type: 'output' as const, content: '▸ Full Stack Developer @ StartupXYZ' },
+        // { type: 'output' as const, content: '  2019 - 2021' },
+        // { type: 'output' as const, content: '  Built scalable web applications from scratch' },
+        // { type: 'output' as const, content: '' },
+        // { type: 'output' as const, content: '▸ Junior Developer @ WebAgency' },
+        // { type: 'output' as const, content: '  2018 - 2019' },
+        // { type: 'output' as const, content: '  Developed client websites and web applications' },
+        // { type: 'output' as const, content: '' },
       ],
     },
     whoami: {
